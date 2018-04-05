@@ -1,0 +1,53 @@
+<ion-content padding class="transparent-header">
+      <ion-title>
+        Profile
+      </ion-title>
+    <ion-navbar>
+      <button ion-button id=logout (click)="logout()">Log Out</button>
+    </ion-navbar>
+  <div id="content">
+    <div id="name">
+    <!-- use of pipe for titlecase -->
+    {{name | titlecase}}
+  </div>
+  <ion-list>
+      <ion-item *ngFor="let user of users">
+        <h2>
+          <ion-avatar item-start>
+            <img id="profile-image" src="{{user.picture.large}}" alt="image">
+          </ion-avatar>
+        </h2>
+        <hr>
+        <h2 style="text-align:center">Personal Details</h2>
+          <hr>
+          <!-- use of pipe for titlecase -->
+        <div id="content" text-center>
+           <h2>First Name: {{user.name.first | titlecase}}</h2>
+           <h2>Last Name: {{user.name.last |titlecase}}</h2>
+           <!-- use of pipe for customized date -->
+           <h2>Date of Birth: {{user.dob | date:fullDate}}</h2>
+           <h2>Email: {{user.email}}</h2>
+           <h2>Phone Number: {{user.phone}}</h2>
+           <h2>Cell Information: {{user.cell}}</h2>
+           <hr>
+           <h2 style="text-align:center">Location</h2>
+           <hr>
+           <div id="location" text-center>
+           <h2>Street: {{user.location.street}}</h2>
+           <h2>City: {{user.location.city}}</h2>
+           <h2>State: {{user.location.state}}</h2>
+           <h2>Postcode: {{user.location.postcode}}</h2>
+         </div>
+      </div>
+      </ion-item>
+  </ion-list>
+  </div>
+    <!-- <button id="loaduser" ion-button (click)="loadJson()">Load Users</button> -->
+    <!--  -->
+    <div id="loaduser" text-center>
+        <button ion-button (click)="loadJson()">
+          Load User
+        </button>
+    </div>
+    <!--  -->
+</ion-content>
